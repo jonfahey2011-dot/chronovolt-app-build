@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="3840" height="2160" viewBox="0 0 3840 2160">
+  <title>ChronoVolt Boot Card — Master SVG (Red/White) • v1.1 (width-locked)</title>
+  <defs>
+    <style><![CDATA[
+      :root { --bg:#B81515; --fg:#F6EDE2; }
+      #bg { fill: var(--bg); }
+      .fg { fill: var(--fg); stroke: var(--fg); }
+      .text { fill: var(--fg);
+              font-family: "Eurostile","Bank Gothic","Orbitron","Agency FB","Arial Narrow",sans-serif;
+              font-weight: 800; }
+      #brand_text { font-size: 360px; }
+      #unit_number { font-size: 760px; }
+      #divider { stroke-width: 28; stroke-linecap: round; }
+      .roof { stroke-width: 36; fill: none; stroke-linejoin: round; }
+      #scanlines rect { fill: var(--fg); opacity: .05; }
+      .guide { fill: none; stroke: var(--fg); opacity: .12; stroke-dasharray: 20 22; }
+    ]]></style>
+    <pattern id="scanlinePattern" width="6" height="6" patternUnits="userSpaceOnUse">
+      <rect x="0" y="0" width="6" height="2"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect id="bg" x="0" y="0" width="3840" height="2160"/>
+
+  <!-- Safe-area (optional) -->
+  <g id="guides">
+    <rect x="160" y="120" width="3520" height="1920" class="guide"/>
+  </g>
+
+  <!-- Lockup width reference -->
+  <g id="lockup" transform="translate(0,0)">
+    <!-- Target width that both lines are justified to -->
+    <rect id="lock_width_ref" x="480" y="0" width="2880" height="1" fill="none"/>
+
+    <!-- Roofline emblem above brand -->
+    <path id="roofline" class="fg roof"
+          d="M 480 540
+             H 1750
+             l 130 -130
+             h 1180
+             a 32 32 0 0 1 32 32
+             v 48
+             h 140
+             a 24 24 0 0 1 24 24
+             v 56
+             h 260
+             a 28 28 0 0 1 28 28
+             v 40
+             H 3360
+             V 592
+             h -990
+             v -84
+             h -460
+             l -130 132
+             H 480 z"/>
+
+    <!-- Brand word (width-locked to 2880px) -->
+    <text id="brand_text" class="text"
+          x="480" y="950"
+          textLength="2880" lengthAdjust="spacingAndGlyphs">CHRONOVOLT</text>
+
+    <!-- Divider matching same width -->
+    <line id="divider" class="fg" x1="480" y1="1008" x2="3360" y2="1008"/>
+
+    <!-- Unit number (width-locked to same width for film-accurate look).
+         Adjust the content freely; width will remain identical to brand. -->
+    <text id="unit_number" class="text"
+          x="480" y="1640"
+          textLength="2880" lengthAdjust="spacingAndGlyphs">7102</text>
+  </g>
+
+  <!-- Optional scanlines -->
+  <g id="scanlines">
+    <rect x="0" y="0" width="3840" height="2160" fill="url(#scanlinePattern)"/>
+  </g>
+
+  <!-- Metadata for pipeline -->
+  <metadata id="build">
+    {"template":"chronovolt_boot_card","version":"1.1","palette":"red/white","lockWidthPx":2880}
+  </metadata>
+</svg>
